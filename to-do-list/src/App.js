@@ -3,32 +3,29 @@ import {useState} from "react";
 import Form from './components/Form';
 import ToDoLists from './components/ToDoLists'
 
-
 function App() {
-  const [toDo,setToDo] = useState([])
-  const updateToDo = (event) => {
-  event.preventDefault()
-  setToDo(event.target.value)
-  }
-  console.log(toDo)
-  const handleSubmitForm = (event) => {
-    if(event.target.value){
-      setToDo(...toDo, event.target.value);
-    }
-    console.log("HERE",toDo)
-  }
 
+  const [inputValue,setInputValue] = useState("")
+  const [newToDo,setNewToDo] = useState(["print the papers"])
+
+  const handleInputValue = (event) => {
+    setInputValue(event.target.value)
+  }
+  const handleSubmitForm = (event) => {
+      console.log("HERE",...newToDo)
+      setNewToDo([...newToDo, inputValue])
+      event.preventDefault()
+  }
+  console.log("NEW",newToDo)
   return (
     <div className="App">
         <Form
-        value = {toDo}
-        toDoList={updateToDo}
+        inputValue = {inputValue}
+        handleInputValue = {handleInputValue}
         handleSubmitForm = {handleSubmitForm}
          />
-        <strong>{toDo}</strong>
-        <ToDoLists
-        toDoList = {toDo}
-        />
+         <ToDoLists 
+         list = {newToDo} />
     </div>
   );
 }

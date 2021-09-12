@@ -1,12 +1,13 @@
-import React from "react"
+import React from "react";
+import '../App.css';
 
-export default function ToDoLists({toDo}){
+export default function ToDoLists({list}){
     let toDoListPage;
-    if(toDo && toDo.length !== 0){
+    if(list.length > 1){
       return(
         toDoListPage = ( 
-        toDo.map((toDo) => {
-            return (<p className = "toDoList">{toDo}</p>)
+          list.map((toDo,index) => {
+            return (<p className = "toDoList">{index + 1} - {toDo}</p>)
         })
         )
       )
@@ -17,6 +18,7 @@ export default function ToDoLists({toDo}){
         "Please add something to do!"
       )  
       }
+
     return(
     <div>
       {toDoListPage}
