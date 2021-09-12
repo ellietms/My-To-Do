@@ -1,13 +1,18 @@
 import React from "react";
 import '../App.css';
 
-export default function ToDoLists({list}){
+export default function ToDoLists({list, handleDeleteItem}){
     let toDoListPage;
-    if(list.length > 1){
+    if(list.length > 0){
       return(
         toDoListPage = ( 
           list.map((toDo,index) => {
-            return (<p className = "toDoList">{index + 1} - {toDo}</p>)
+            return (
+            <div key={index} className = "toDoList"> 
+            {index + 1} - {toDo}
+            <button onClick= {() => handleDeleteItem(toDo)}> X </button>
+            </div>
+            )
         })
         )
       )

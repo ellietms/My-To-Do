@@ -16,6 +16,11 @@ function App() {
       setNewToDo([...newToDo, inputValue])
       event.preventDefault()
   }
+
+  const handleDeleteItem = (item) => {
+    let updatedList = newToDo.filter(toDoItem => toDoItem !== item)
+    setNewToDo(updatedList)
+  }
   console.log("NEW",newToDo)
   return (
     <div className="App">
@@ -25,7 +30,9 @@ function App() {
         handleSubmitForm = {handleSubmitForm}
          />
          <ToDoLists 
-         list = {newToDo} />
+         list = {newToDo}
+         handleDeleteItem = {handleDeleteItem}
+         />
     </div>
   );
 }
