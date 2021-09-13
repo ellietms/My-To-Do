@@ -1,4 +1,5 @@
 from app import todoDatbase
+from datetime import datetime
 
 # create Model
 class ToDos(todoDatbase.Model):
@@ -6,5 +7,5 @@ class ToDos(todoDatbase.Model):
     name = todoDatbase.Column(todoDatbase.String(200), nullable = False, unique = True) 
     date_added = todoDatbase.Column(todoDatbase.DateTime, default = datetime.utcnow)
 
-    def __repr__(self):
-        return '<ToDos %r>' % self.name
+    def __init__(self,name): 
+        self.name = name

@@ -1,38 +1,60 @@
-import './App.css';
-import {useState} from "react";
-import Form from './components/Form';
-import ToDoLists from './components/ToDoLists'
+import "./App.css";
+import { useState, useEffect } from "react";
+import Form from "./components/Form";
+import ToDoLists from "./components/ToDoLists";
 
 function App() {
+  const [inputValue, setInputValue] = useState("");
+  const [newToDo, setNewToDo] = useState(["print the papers"]);
+  const [test,setTest] =useState(90)
 
-  const [inputValue,setInputValue] = useState("")
-  const [newToDo,setNewToDo] = useState(["print the papers"])
+  
+    // await fetch('http://127.0.0.1:5000/test', {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({"time" : test }),
+    // })
+    // .then(res => res.json())
+    // .then(res => console.log(res))
+    // .then(data => setTest(data["time"]) )
+    
+
 
   const handleInputValue = (event) => {
-    setInputValue(event.target.value)
-  }
-  const handleSubmitForm = (event) => {
-      console.log("HERE",...newToDo)
-      setNewToDo([...newToDo, inputValue])
-      event.preventDefault()
-  }
+    setInputValue(event.target.value);
+  };
+
+  async function handleSubmitForm (event){
+    event.preventDefault();
+    console.log("HERE", ...newToDo);
+    setNewToDo([...newToDo, inputValue]);
+    await fetch('http://127.0.0.1:5000/test', {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(res => res.json())
+    .then(res => console.log("HELLOOO",res))
+    .then(data => setTest(data))
+  };
 
   const handleDeleteItem = (item) => {
-    let updatedList = newToDo.filter(toDoItem => toDoItem !== item)
-    setNewToDo(updatedList)
-  }
-  console.log("NEW",newToDo)
+    let updatedList = newToDo.filter((toDoItem) => toDoItem !== item);
+    setNewToDo(updatedList);
+  };
+  console.log("NEW", newToDo);
   return (
     <div className="App">
-        <Form
-        inputValue = {inputValue}
-        handleInputValue = {handleInputValue}
-        handleSubmitForm = {handleSubmitForm}
-         />
-         <ToDoLists 
-         list = {newToDo}
-         handleDeleteItem = {handleDeleteItem}
-         />
+      <Form
+        inputValue={inputValue}
+        handleInputValue={handleInputValue}
+        handleSubmitForm={handleSubmitForm}
+        test = {test}
+      />
+      <ToDoLists list={newToDo} handleDeleteItem={handleDeleteItem} />
     </div>
   );
 }
