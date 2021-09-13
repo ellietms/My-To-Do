@@ -4,12 +4,14 @@ from models import ToDos
 from datetime import datetime
 
 
+@app.route("/", methods = ['GET' , 'POST'])
+def home():
+    return "YOU are at HOME"
+
 @app.route("/test", methods = ['GET'])
 def view():
     return {"time": datetime.utcnow()}
     
-
-
 
 
 @app.route('/My-Todolists', methods = ['GET','POST'])
@@ -20,6 +22,6 @@ def add_todo():
         todoDatbase.session.add(final_data)
         todoDatbase.session.commit()
         print("DATA",final_data)
-        return "DONE"
+        return "Fetching DONE"
     else:
-        return "NOPE!"
+        return "Nothing has been fetched yet!"

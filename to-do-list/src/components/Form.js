@@ -4,8 +4,9 @@ export default function Form({inputValue, handleInputValue, handleSubmitForm, te
     return (
     <div>
         {/* method="post" action="" */}
+        {/* action = "{{url_for('add_todo')}}" method="POST" */}
         <h1>Time is {test}</h1>
-        <form action = "{{url_for('add_todo')}}" method="POST" onSubmit={(event) => handleSubmitForm(event)}>
+        <form onSubmit={(event) => handleSubmitForm(event)}>
             <label htmlFor="to-do-list"  name="to-do-list">To do list</label>
             <div>
             <input 
