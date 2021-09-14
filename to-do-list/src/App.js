@@ -6,31 +6,35 @@ import ToDoLists from "./components/ToDoLists";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [newToDo, setNewToDo] = useState(["print the papers"]);
-  const [test,setTest] =useState(90)
+  const [test,setTest] =useState()
 
+  useEffect(() => {
+    
+    // .catch(error => {console.log("REQUESTED FAILED ERROR :" , error)})
+  },[])
   
 const handleInputValue = (event) => {
     setInputValue(event.target.value);
   };
 
-async function handleSubmitForm (event){
+const handleSubmitForm = (event) => {
     event.preventDefault();
     console.log("HERE", ...newToDo);
     setNewToDo([...newToDo, inputValue]);
-    fetch('http://0.0.0.0:8080/test', {
+    fetch('/test' , {
       method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-      }
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"name" : `${event.target.value}`})
     })
-    .then(res => res.json())
+    .then(res => console.log("RESULT",res.json()))
     .then(result => console.log("HELLOOO RESULT",result))
     .then(data => setTest(data))
-    .catch(error => console.log("REQUESTED FAILED", "ERROR :", error))
   };
 
-  const handleDeleteItem = (item) => {
-    let updatedList = newToDo.filter((toDoItem) => toDoItem !== item);
+  const handleDeleteItem = (index) => {
+    let updatedList = [...newToDo.slice(0,index),...newToDo.slice(index+1)]
     setNewToDo(updatedList);
   };
   console.log("NEW", newToDo);

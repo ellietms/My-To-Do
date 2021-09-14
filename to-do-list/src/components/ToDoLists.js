@@ -10,7 +10,7 @@ export default function ToDoLists({list, handleDeleteItem}){
             return (
             <div key={index} className = "toDoList"> 
             {index + 1} - {toDo}
-            <button onClick= {() => handleDeleteItem(toDo)}> X </button>
+            <button onClick= {() => handleDeleteItem(index)}> X </button>
             </div>
             )
         })

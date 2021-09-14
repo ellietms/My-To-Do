@@ -10,7 +10,7 @@ def home():
 
 @app.route("/test", methods = ['GET'])
 def view():
-    return {"time": datetime.utcnow()}
+    return [{"name":"buy ice cream"}]
     
 
 
