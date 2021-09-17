@@ -2,7 +2,7 @@
 from app import todoDatbase
 from datetime import datetime
 
-# create Model
+
 
 # @dataclass
 class ToDos(todoDatbase.Model):

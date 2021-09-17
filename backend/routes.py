@@ -4,21 +4,14 @@ from models import ToDos
 from datetime import datetime
 
 
-@app.route("/api", methods=['GET'])
+@app.route("/my-to-do-lists", methods=['GET'])
 def home():
     result = todoDatbase.session.query(ToDos).all()
-    return jsonify({"todos": [x.to_json() for x in result]})
-
-    # print([(x.to_json()) for x in result])
-    # return "hi"
+    return jsonify({"todos": [each_data.to_json() for each_data in result]})
 
 
-@app.route("/test", methods=['GET'])
-def view():
-    return [{"name": "buy ice cream"}]
 
-
-@app.route('/My-Todolists', methods=['GET', 'POST'])
+@app.route('/add-new-todo', methods=['GET', 'POST'])
 def add_todo():
     if request.method == 'POST':
         all_data = request.form['to-do-list']

@@ -6,19 +6,17 @@ import ToDoLists from "./components/ToDoLists";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [newToDo, setNewToDo] = useState(["print the papers"]);
-  const [test,setTest] =useState()
+  // const [test,setTest] =useState()
 
   useEffect(() => {
-     fetch('/api' , {
+     fetch('/my-to-do-lists' , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     })
     .then(res => res.json())
-    .then(result => console.log("RESULT PROMISE :", result))
-    // .then(result => setNewToDo([...newToDo,
-    //   result["todos"].map(x => x.name)]))
+    .then(result => setNewToDo([...newToDo, result["todos"].map(data => data.name)[0]]))
   },[])
   
 const handleInputValue = (event) => {
@@ -42,7 +40,7 @@ const handleSubmitForm = (event) => {
         inputValue={inputValue}
         handleInputValue={handleInputValue}
         handleSubmitForm={handleSubmitForm}
-        test = {test}
+        // test = {test}
       />
       <ToDoLists list={newToDo} handleDeleteItem={handleDeleteItem} />
     </div>

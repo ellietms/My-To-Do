@@ -1,0 +1,49 @@
+1)SQLAlchemy is a class and we import it from flask_sqlalchemy
+
+2)creating an object from Flask :
+    
+app =  FLASK(__name__)
+
+3)we set this object a url of DB for using it.
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///< name you want>'
+
+4)we use this object form flask (app) to create another object from the SQLAlchemy class
+
+db = SQLAlchemy(app)
+
+(db is another object)
+
+5)We use this object (db) to call the classes inside of it and create our Database
+(something like this :)
+
+class my_database(db.Model):
+   id = db.Column('student_id', db.Integer, primary_key = True)
+   name = db.Column(db.String(100))
+   city = db.Column(db.String(50))  
+   addr = db.Column(db.String(200))
+   pin = db.Column(db.String(10))
+
+def __init__(self, name, city, addr,pin):
+   self.name = name
+   self.city = city
+   self.addr = addr
+   self.pin = pin
+
+6)Now for using this database we created, we need to use create_all():
+    db.create_all()
+    (using/creating our database)
+
+
+7)to use CRUD, SQLAlchemy has specific objects named session :
+    db.session.add(model object)
+    db.session.delete(model object)
+    model.query.all()
+    
+8)to apply filters to the retrieved record set by using the filter attribute.
+to retrieve records for city = ‘Tokyo’ in our databse tables (my_database)
+use the following statement:
+
+my_database.query.filter_by(city = ’Tokyo’).all()
+
+9)
