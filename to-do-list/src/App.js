@@ -9,8 +9,16 @@ function App() {
   const [test,setTest] =useState()
 
   useEffect(() => {
-    
-    // .catch(error => {console.log("REQUESTED FAILED ERROR :" , error)})
+     fetch('/api' , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(result => console.log("RESULT PROMISE :", result))
+    // .then(result => setNewToDo([...newToDo,
+    //   result["todos"].map(x => x.name)]))
   },[])
   
 const handleInputValue = (event) => {
@@ -21,16 +29,6 @@ const handleSubmitForm = (event) => {
     event.preventDefault();
     console.log("HERE", ...newToDo);
     setNewToDo([...newToDo, inputValue]);
-    fetch('/test' , {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({"name" : `${event.target.value}`})
-    })
-    .then(res => console.log("RESULT",res.json()))
-    .then(result => console.log("HELLOOO RESULT",result))
-    .then(data => setTest(data))
   };
 
   const handleDeleteItem = (index) => {
