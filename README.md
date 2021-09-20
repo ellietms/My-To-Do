@@ -11,10 +11,10 @@ A full-stack To-Do app with React,Flask and Sqlite.
 <li><strong>Back-end (Python)</strong></li><br>
 
 - Flask <br>
-- SQLAlchemy <br>
+- Flask_Sqlalchemy<br>
 - Sqlite <br><br>
 
 <li><strong>Other</strong></li><br>
-
+- JSONIFY <br>
 - Datetime library </br>
 - Unit tests by mock and patch  </br>
