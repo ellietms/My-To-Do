@@ -8,7 +8,7 @@ function App() {
   const [newToDo, setNewToDo] = useState([]);
 
   useEffect(() => {
-    fetch("/my-to-do-lists", {
+    fetch("/my-to-do-lists/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -22,15 +22,15 @@ function App() {
         )
       )
       .then((show) => console.log(show));
-  }, []);
+  }, [newToDo]);
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
   };
 
-  const handleSubmitForm = (event) => {
+  async function  handleSubmitForm(event){
     event.preventDefault();
-    setNewToDo([...newToDo, inputValue]);
+    setNewToDo([...newToDo, inputValue])
   };
 
   const handleDeleteItem = (index) => {

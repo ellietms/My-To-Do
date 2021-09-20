@@ -16,4 +16,10 @@ class ToDos(todoDatbase.Model):
             "name":self.name,
             "date_added": self.date_added
         }
+    def create_new_data(self, newData):
+        return{
+             "id" :self.id,
+            "name":newData,
+            "date_added": self.date_added
+        }    
 

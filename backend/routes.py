@@ -1,30 +1,33 @@
-from flask import request, jsonify
+from flask import request, jsonify, redirect
 from app import app, todoDatbase
 from models import ToDos
 from datetime import datetime
 
 
-@app.route("/my-to-do-lists", methods=['GET', 'POST'])
+@app.route("/all_data", methods= ['GET'])
+def showData():
+    all_data = todoDatbase.session.query(ToDos).all()
+    return jsonify({"todos": [each_data.to_json() for each_data in all_data]})
+
+
+@app.route("/my-to-do-lists/", methods=['GET', 'POST'])
 def home():
-    if request.method == 'GET':
-        result = todoDatbase.session.query(ToDos).all()
-        return jsonify({"todos": [each_data.to_json() for each_data in result]})
-    elif request.method == 'POST':
-        return "Nothing"
+    print("********************************")
+    all_data_from_class_model_ToDos = ToDos.query.all()
+    for eachData in all_data_from_class_model_ToDos:
+        print("ALL DATA" , eachData.to_json())
+    print("*******************************")
+    if request.method == 'POST':
+        new_data = request.form.to_dict(flat=False)['toDoList'][0]
+        print("REQUES", new_data)
+        new_class_model_for_newData_postReq = ToDos(name = new_data)
+        todoDatbase.session.add(new_class_model_for_newData_postReq)
+        todoDatbase.session.commit()
+        # return redirect("/my-to-do-lists/")
+    elif request.method == 'GET':    
+        new_all_data = todoDatbase.session.query(ToDos).all()
+        data = jsonify({"todos": [each_data.to_json() for each_data in new_all_data]})  
+        # return redirect("/my-to-do-lists/")
     else:
-        return "This is Error"    
+        return "SOMETHING WENT WRONG"
 
-
-
-# @app.route('/add-new-todo', methods=['GET', 'POST'])
-# def add_todo():
-#     if request.method == 'POST':
-#         return print("NAME FROM BKND", ToDos(request.form["to-do-list"]))
-#         # all_data = request.form['to-do-list']
-#         # final_data = ToDos(all_data)
-#         # todoDatbase.session.add(final_data)
-#         # todoDatbase.session.commit()
-#         # print("DATA", final_data)
-#         # return "Fetching DONE"
-#     else:
-#         return "Nothing has been fetched yet!"

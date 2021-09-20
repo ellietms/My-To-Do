@@ -3,11 +3,11 @@ import React from "react"
 export default function Form({inputValue, handleInputValue, handleSubmitForm, test}){
     return (
     <div>
-        <form action = "{{url_for('my-to-do-lists')}}" method="POST" onSubmit={(event) => handleSubmitForm(event)}>
+        <form action="/my-to-do-lists/" method="POST">
             <label htmlFor="to-do-list"  name="to-do-list">To do list</label>
             <div>
             <input 
-            name="to-do-list"
+            name="toDoList"
             type="text"
             placeholder="what to do?"
             value = {inputValue}
