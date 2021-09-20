@@ -17,10 +17,16 @@ export default function ToDoLists({list, handleDeleteItem}){
         )
       )
      }
-      else{ 
+     else if (list.length === 0){
       toDoListPage = 
       (
         "Please add something to do!"
+      )  
+     }
+      else{ 
+      toDoListPage = 
+      (
+        "Loading ......"
       )  
       }
 

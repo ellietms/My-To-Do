@@ -8,7 +8,7 @@ function App() {
   const [newToDo, setNewToDo] = useState([]);
 
   useEffect(() => {
-    fetch("/my-to-do-lists/", {
+    fetch("/all_data", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -22,15 +22,10 @@ function App() {
         )
       )
       .then((show) => console.log(show));
-  }, [newToDo]);
+  }, []);
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
-  };
-
-  async function  handleSubmitForm(event){
-    event.preventDefault();
-    setNewToDo([...newToDo, inputValue])
   };
 
   const handleDeleteItem = (index) => {
@@ -43,7 +38,6 @@ function App() {
       <Form
         inputValue={inputValue}
         handleInputValue={handleInputValue}
-        handleSubmitForm={handleSubmitForm}
       />
       <ToDoLists list={newToDo} handleDeleteItem={handleDeleteItem} />
     </div>

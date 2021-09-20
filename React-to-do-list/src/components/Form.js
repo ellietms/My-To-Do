@@ -15,7 +15,6 @@ export default function Form({inputValue, handleInputValue, handleSubmitForm, te
             <button type="submit">submit</button>
             </div>
         </form>
-        {/* <h1>{test}</h1> */}
     </div>
     )
 }

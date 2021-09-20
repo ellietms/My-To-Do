@@ -18,4 +18,3 @@ from routes import *
 if __name__ == "__main__":
     # todoDatbase.drop_all()
     todoDatbase.create_all()
-    app.run(debug=True)
