@@ -6,13 +6,13 @@ A full-stack To-Do app with React,Flask and Sqlite.
 
 <li><strong>Front-end (Javascript)</strong></li><br>
 
-- React & CSS <br>
+- React & CSS <br><br>
 
 <li><strong>Back-end (Python)</strong></li><br>
 
 - Flask <br>
 - SQLAlchemy <br>
-- Sqlite <br>
+- Sqlite <br><br>
 
 <li><strong>Other</strong></li><br>
 
