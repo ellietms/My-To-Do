@@ -2,8 +2,6 @@
 from app import todoDatbase
 from datetime import datetime
 
-
-
 # @dataclass
 class ToDos(todoDatbase.Model):
     id = todoDatbase.Column(todoDatbase.Integer, primary_key = True)
@@ -16,10 +14,3 @@ class ToDos(todoDatbase.Model):
             "name":self.name,
             "date_added": self.date_added
         }
-    def create_new_data(self, newData):
-        return{
-             "id" :self.id,
-            "name":newData,
-            "date_added": self.date_added
-        }    
-
