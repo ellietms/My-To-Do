@@ -1,5 +1,7 @@
 # My To-Do
 
+A full-stack To-Do app with React,Flask and Sqlite.
+
 ## Tools
 
 <li><strong>Front-end (Javascript)</strong></li><br>
