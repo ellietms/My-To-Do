@@ -14,5 +14,5 @@
 
 <li><strong>Other</strong></li><br>
 
--Datetime library </br>
--Unit tests by mock and patch  </br>
+- Datetime library </br>
+- Unit tests by mock and patch  </br>
