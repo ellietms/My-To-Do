@@ -3,9 +3,7 @@ import React from "react"
 export default function Form({inputValue, handleInputValue, handleSubmitForm, test}){
     return (
     <div>
-        {/* method="post" action="" */}
-        {/*  */}
-        <form action = "{{url_for('add-new-todo')}}" method="POST" onSubmit={(event) => handleSubmitForm(event)}>
+        <form action = "{{url_for('my-to-do-lists')}}" method="POST" onSubmit={(event) => handleSubmitForm(event)}>
             <label htmlFor="to-do-list"  name="to-do-list">To do list</label>
             <div>
             <input 
@@ -17,7 +15,7 @@ export default function Form({inputValue, handleInputValue, handleSubmitForm, te
             <button type="submit">submit</button>
             </div>
         </form>
-        <h1>{test}</h1>
+        {/* <h1>{test}</h1> */}
     </div>
     )
 }

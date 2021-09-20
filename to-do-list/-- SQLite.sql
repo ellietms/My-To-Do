@@ -1,3 +1,5 @@
 -- SQLite
+use toDos
+
 INSERT INTO to_dos (id, name, date_added)
-VALUES ("1","cleaning","14/09/21");
+VALUES ("1","cleaning", NULL );
