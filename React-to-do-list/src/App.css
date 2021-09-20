@@ -1,21 +1,60 @@
-html{
-    border: 2px solid black;
-    height:80%;
-    margin:10px;
-}
-
 .App {
   text-align: center;
+  margin-top: 10px;
+  border: 10px darkslategray dashed;
+  background-image: linear-gradient(to right,rgb(95, 99, 104), rgb(237, 234, 245),rgb(34, 42, 54));
 }
 
+.main_label{
+  padding-top: 10px;
+  color: rgb(6, 68, 68);
+}
+
+
+.form_container{
+  border: 4px solid black;
+  padding:20px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to right,rgb(3, 32, 29), rgb(237, 234, 245),rgb(2, 11, 6));
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.input_todo{
+  display: flex;
+  flex-direction: column;
+  margin: 15px 4px;
+  border: 6px solid rgb(6, 68, 68);
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
 
 .toDoList{
     text-align: center;
-    border: 1px solid purple;
-    width:50%;
+    background-image: linear-gradient(to right,rgb(166, 176, 189), rgb(90, 144, 94),rgb(139, 147, 160));
+    border: 9px solid rgb(13, 51, 51);
+    border-radius: 40%;
+    width: 25%;
     display: flex;
     justify-content: center;
-   margin-left: auto;
-   margin-right: auto;
-   padding: 10px 10px;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px 10px;
+}
+
+
+.button{
+  margin-left: 14px;
+  margin-top: 15px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(181, 194, 124);
+  border-radius:10px;
 }

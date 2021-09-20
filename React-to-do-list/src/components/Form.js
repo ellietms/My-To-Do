@@ -3,16 +3,19 @@ import React from "react"
 export default function Form({inputValue, handleInputValue, handleSubmitForm, test}){
     return (
     <div>
-        <form action="/my-to-do-lists/" method="POST">
-            <label htmlFor="to-do-list"  name="to-do-list">To do list</label>
+        <form 
+        className="form_container"
+        action="/my-to-do-lists/" 
+        method="POST">
             <div>
             <input 
             name="toDoList"
             type="text"
             placeholder="what to do?"
+            className="input_todo"
             value = {inputValue}
             onChange={(event) => handleInputValue(event)}/>
-            <button type="submit">submit</button>
+            <button className="button" type="submit">Submit</button>
             </div>
         </form>
     </div>

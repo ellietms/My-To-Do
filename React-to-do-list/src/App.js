@@ -35,6 +35,7 @@ function App() {
   console.log("NEW", newToDo);
   return (
     <div className="App">
+      <h1 className="main_label"> My To-Do</h1>
       <Form
         inputValue={inputValue}
         handleInputValue={handleInputValue}
