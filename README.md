@@ -15,6 +15,7 @@ A full-stack To-Do app with React,Flask and Sqlite.
 - Sqlite <br><br>
 
 <li><strong>Other</strong></li><br>
+
 - JSONIFY <br>
 - Datetime library </br>
 - Unit tests by mock and patch  </br>
