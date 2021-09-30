@@ -15,7 +15,6 @@ function App() {
       },
     })
       .then((res) => res.json())
-      // .then(result => console.log("ALL Result", [...result["todos"]]))
       .then((result) =>
         setNewToDo(
           [...newToDo,
@@ -34,9 +33,11 @@ function App() {
     console.log("index",index)   
     fetch(`/my-to-do-lists/${index}` , {
       method: 'DELETE',
-      headers: {
-        'Content-Type' : 'application/json'
-      }})
+      headers : {      
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
     .then((res) => res.json())  
     .then((result) => setNewToDo(result["todos"]))
   };
