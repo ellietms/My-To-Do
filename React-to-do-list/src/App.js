@@ -8,29 +8,38 @@ function App() {
   const [newToDo, setNewToDo] = useState([]);
 
   useEffect(() => {
-    fetch("/all_data", {
+    fetch("/my-to-do-lists/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
+      // .then(result => console.log("ALL Result", [...result["todos"]]))
       .then((result) =>
         setNewToDo(
-          ...newToDo,
-          result["todos"].map((data) => data.name)
+          [...newToDo,
+          ...result["todos"]]
         )
       )
-      .then((show) => console.log(show));
+      .then((show) => console.log("newTodo",show));
   }, []);
+
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
   };
 
-  const handleDeleteItem = (index) => {
-    let updatedList = [...newToDo.slice(0, index), ...newToDo.slice(index + 1)];
-    setNewToDo(updatedList);
+  const handleDeleteItem = (index) => { 
+    console.log("index",index)   
+    fetch(`/my-to-do-lists/${index}` , {
+      method: 'DELETE',
+      headers: {
+        'Content-Type' : 'application/json'
+      }})
+    .then((res) => res.json())  
+    .then((result) => setNewToDo(result["todos"]))
+    // let updatedList = [...newToDo.slice(0, index), ...newToDo.slice(index + 1)];
   };
   console.log("NEW", newToDo);
   return (
