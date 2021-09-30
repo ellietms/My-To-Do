@@ -1,6 +1,6 @@
 # My To-Do
 
-A full-stack To-Do app with React, Flask, Sqlite and python libraries.
+Full-stack To-Do app with React, Flask, Sqlite and python libraries.
 
 ## Tools
 
