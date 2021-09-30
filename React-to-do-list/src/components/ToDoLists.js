@@ -9,8 +9,8 @@ export default function ToDoLists({list, handleDeleteItem}){
           list.map((toDo,index) => {
             return (
             <div key={index}> 
-            <div className = "toDoList"> {index + 1} - {toDo} 
-            <button className="button" onClick= {() => handleDeleteItem(index)}> Delete </button>
+            <div className = "toDoList"> {index + 1} - {toDo.name} 
+            <button className="button" onClick= {() => handleDeleteItem(toDo.id)}> Delete </button>
             </div>
             </div>
             )
