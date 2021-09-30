@@ -10,7 +10,7 @@ export default function ToDoLists({list, handleDeleteItem}){
             return (
             <div key={index}> 
             <div className = "toDoList"> {index + 1} - {toDo.name} 
-            <button className="button" onClick= {() => handleDeleteItem(toDo.id)}> Delete </button>
+            <button className="button" onClick= {() => {handleDeleteItem(toDo.id);window.location.reload(true)}}> Delete </button>
             </div>
             </div>
             )
@@ -18,16 +18,10 @@ export default function ToDoLists({list, handleDeleteItem}){
         )
       )
      }
-     else if (list.length === 0){
+     else{
       toDoListPage = 
       (
-        "Please add something to do!"
-      )  
-     }
-      else{ 
-      toDoListPage = 
-      (
-        "Loading ......"
+        <p>Loading ......</p>
       )  
       }
 
