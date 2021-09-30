@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Form({inputValue, handleInputValue, handleSubmitForm, test}){
+export default function Form({inputValue, handleInputValue}){
     return (
     <div>
         <form 

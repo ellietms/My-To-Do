@@ -39,7 +39,6 @@ function App() {
       }})
     .then((res) => res.json())  
     .then((result) => setNewToDo(result["todos"]))
-    // let updatedList = [...newToDo.slice(0, index), ...newToDo.slice(index + 1)];
   };
   console.log("NEW", newToDo);
   return (
