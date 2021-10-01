@@ -38,13 +38,17 @@ def show_chosen_data(index):
 
 
 
-@app.route("/my-to-do-lists/<int:index>", methods = ['DELETE'])    
+@app.route("/my-to-do-lists/<int:index>", methods = ['DELETE','PUT'])    
 def remove_chosen_data(index):
     chosen_data_to_delete = ToDos.query.get(index)
-    print("Data for deleting",chosen_data_to_delete.to_json())
-    todoDatbase.session.delete(chosen_data_to_delete)
-    todoDatbase.session.commit()
-    all_updated_data = ToDos.query.all()
+    if request.method == 'DELETE':
+        print("Data for deleting",chosen_data_to_delete.to_json())
+        todoDatbase.session.delete(chosen_data_to_delete)
+        todoDatbase.session.commit()
+        all_updated_data = ToDos.query.all()
+    elif request.method == 'PUT':
+        
+            
     for eachData in all_updated_data:
             print("ALL DATA" , eachData.to_json())
     return redirect('http://localhost:3000/my-to-do-lists/')   
