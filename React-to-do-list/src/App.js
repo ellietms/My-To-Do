@@ -22,7 +22,7 @@ function App() {
         )
       )
       .then((show) => console.log("newTodo",show));
-  },[]);
+  },[newToDo]);
 
 
   const handleInputValue = (event) => {
