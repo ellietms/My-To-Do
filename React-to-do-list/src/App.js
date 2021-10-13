@@ -22,7 +22,7 @@ function App() {
         )
       )
       .then((show) => console.log("newTodo",show));
-  },[newToDo]);
+  },[]);
 
 
   const handleInputValue = (event) => {
@@ -42,11 +42,6 @@ function App() {
     .then((result) => setNewToDo(result["todos"]))
   };
 
-
-  const handleUpdateItem = () => {
-
-  }
-
   return (
     <div className="App">
       <h1 className="main_label"> My To-Do</h1>
@@ -57,7 +52,6 @@ function App() {
       <ToDoLists 
       list={newToDo}
       handleDeleteItem={handleDeleteItem}
-      handleUpdateItem = {handleUpdateItem}
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import '../App.css';
 
-export default function ToDoLists({list, handleDeleteItem, handleUpdateItem}){
+export default function ToDoLists({list, handleDeleteItem}){
     let toDoListPage;
     if(list.length > 0){
       return(
@@ -11,7 +11,6 @@ export default function ToDoLists({list, handleDeleteItem, handleUpdateItem}){
             <div key={index}> 
             <div className = "toDoList"> {index + 1} - {toDo.name} 
             <button className="button" onClick= {() => {handleDeleteItem(toDo.id);window.location.reload(true)}}> Delete </button>
-            <button className="button" onClick= {() => {handleUpdateItem(toDo.id);window.location.reload(true)}}> Update </button>
             </div>
             </div>
             )
