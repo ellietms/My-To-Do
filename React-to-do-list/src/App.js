@@ -5,6 +5,7 @@ import ToDoLists from "./components/ToDoLists";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  // What does the "new" mean in this name?
   const [newToDo, setNewToDo] = useState([]);
 
   useEffect(() => {

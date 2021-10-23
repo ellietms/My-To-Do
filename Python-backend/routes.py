@@ -18,6 +18,8 @@ def home():
         new_class_model_for_newData_postReq = ToDos(name = new_data)
         todoDatbase.session.add(new_class_model_for_newData_postReq)
         todoDatbase.session.commit()
+        # Generally APIs tend to just return data (or an empty JSON object) when they succeed - they tend not to know what the frontend has going on, or be able to do things like redirect to them.
+        # This redirect is a little weird, because the client is presumably actually ignoring the response? If it tries to parse it as JSON, it will get confused!
         return redirect('http://localhost:3000/my-to-do-lists/')
     elif request.method == 'GET':
         all_data = todoDatbase.session.query(ToDos).all()
@@ -30,6 +32,7 @@ def home():
 @app.route('/my-to-do-lists/<int:index>', methods= ['GET'])
 def show_chosen_data(index):
     print("////////////////////////////////")
+    # Given you're just trying to get one thing, it would be more efficient to use a query here on an indexed column, so that the database does the filtering for you, rather than getting all of the data out of the database and filtering it yourself.
     all_data= ToDos.query.all()
     all_data_json = [each_data.to_json() for each_data in all_data]
     chosen_data = [chosen_data for chosen_data in all_data_json if chosen_data['id'] != index]
@@ -47,6 +50,7 @@ def remove_chosen_data(index):
     all_updated_data = ToDos.query.all()            
     for eachData in all_updated_data:
             print("ALL DATA" , eachData.to_json())
+    # Same comment as before about redirecting
     return redirect('http://localhost:3000/my-to-do-lists/')   
     
     
