@@ -29,11 +29,27 @@ def home():
 @app.route('/my-to-do-lists/<int:index>', methods= ['GET'])
 def show_chosen_data(index):
     print("////////////////////////////////")
-    all_data= ToDos.query.all()
-    all_data_json = [each_data.to_json() for each_data in all_data]
-    chosen_data = [chosen_data for chosen_data in all_data_json if chosen_data['id'] != index]
-    print("chosen data",chosen_data)
-    return  jsonify({"todos": chosen_data})
+     # first way filter
+    chosen_data_1= ToDos.query.get(index)
+    #  second way filter
+    chosen_data_2 = ToDos.query.filter(ToDos.id == index).first()
+    #  Third way filter
+    chosen_data_3 = todoDatbase.session.query(ToDos).filter(ToDos.id == index).first()
+    # 4th way filter
+    chosen_data_4 = ToDos.query.filter_by(id = index).first()
+    
+    print("-------RESULT1---------",chosen_data_1.to_json())
+    print("-------RESULT2---------",chosen_data_2.to_json())
+    print("-------RESULT3---------",chosen_data_3.to_json())
+    print("-------RESULT4---------",chosen_data_4.to_json())
+    
+    return  jsonify({"todos": chosen_data_1.to_json()})
+
+    # Manual filter
+    
+    # all_data_json = [each_data.to_json() for each_data in all_data]
+    # chosen_data = [chosen_data for chosen_data in all_data_json if chosen_data['id'] != index]
+   
 
 
 
