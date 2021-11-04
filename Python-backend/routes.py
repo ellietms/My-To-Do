@@ -45,8 +45,7 @@ def show_chosen_data(index):
     
     return  jsonify({"todos": chosen_data_1.to_json()})
 
-    # Manual filter
-    
+    # Manual filtering
     # all_data_json = [each_data.to_json() for each_data in all_data]
     # chosen_data = [chosen_data for chosen_data in all_data_json if chosen_data['id'] != index]
    
@@ -62,7 +61,7 @@ def remove_chosen_data(index):
     all_updated_data = ToDos.query.all()            
     for eachData in all_updated_data:
             print("ALL DATA" , eachData.to_json())
-    return redirect('http://localhost:3000/my-to-do-lists/')   
+    return jsonify({"todos": chosen_data_to_delete.to_json()}) 
     
     
 
