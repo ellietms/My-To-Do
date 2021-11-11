@@ -25,6 +25,8 @@ export default function ToDoLists({ list, handleDeleteItem }) {
         </div>
       );
     }));
+  } else if (list.length === 0) {
+    toDoListPage = <p>Add something to do ......</p>;
   } else {
     toDoListPage = <p>Loading ......</p>;
   }

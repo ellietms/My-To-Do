@@ -19,10 +19,8 @@ function App() {
         // console.log("RESULT", result);
         setToDo([...toDo, ...result["todos"]]);
       })
-      .then((show) => console.log("Todo", show));
+      .then((show) => console.log("Todo-in Get fetch", show));
   }, []);
-
-  console.log("TODOOOOOOOOOOOOO", toDo);
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
@@ -40,11 +38,16 @@ function App() {
       .then((res) => res.json())
       .then((result) => setToDo(result["todos"]));
   };
-  console.log("TODO", toDo);
+
   return (
     <div className="App">
       <h1 className="main_label"> My To-Do</h1>
-      <Form inputValue={inputValue} handleInputValue={handleInputValue} />
+      <Form
+        inputValue={inputValue}
+        handleInputValue={handleInputValue}
+        setToDo={setToDo}
+        toDO={toDo}
+      />
       {toDo && toDo.length !== 0 && (
         <ToDoLists list={toDo} handleDeleteItem={handleDeleteItem} />
       )}
