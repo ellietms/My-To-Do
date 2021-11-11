@@ -19,6 +19,8 @@ def home():
         new_class_model_for_newData_postReq = ToDos(name=new_data)
         todoDatbase.session.add(new_class_model_for_newData_postReq)
         todoDatbase.session.commit()
+        all_data = todoDatbase.session.query(ToDos).all()
+        return jsonify({"todos": [each_data.to_json() for each_data in all_data]})
     elif request.method == 'GET':
         all_data = todoDatbase.session.query(ToDos).all()
         return jsonify({"todos": [each_data.to_json() for each_data in all_data]})

@@ -15,7 +15,10 @@ function App() {
       },
     })
       .then((res) => res.json())
-      .then((result) => setToDo([...toDo, ...result["todos"]]))
+      .then((result) => {
+        // console.log("RESULT", result);
+        setToDo([...toDo, ...result["todos"]]);
+      })
       .then((show) => console.log("Todo", show));
   }, []);
 
@@ -35,12 +38,15 @@ function App() {
       .then((res) => res.json())
       .then((result) => setToDo(result["todos"]));
   };
-
+  console.log("TODO", toDo);
   return (
     <div className="App">
       <h1 className="main_label"> My To-Do</h1>
       <Form inputValue={inputValue} handleInputValue={handleInputValue} />
-      <ToDoLists list={toDo} handleDeleteItem={handleDeleteItem} />
+      {toDo && toDo !== [] && (
+        <ToDoLists list={toDo} handleDeleteItem={handleDeleteItem} />
+      )}
+      {toDo && toDo === [] && <p>Please add something!</p>}
     </div>
   );
 }
