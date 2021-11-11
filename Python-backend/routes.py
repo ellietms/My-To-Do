@@ -16,11 +16,13 @@ def home():
     if request.method == 'POST':
         new_data = request.form.to_dict(flat=False)['toDoList'][0]
         print("New Data POST", new_data)
+        print("*******_______******_____*****")
         new_class_model_for_newData_postReq = ToDos(name=new_data)
         todoDatbase.session.add(new_class_model_for_newData_postReq)
         todoDatbase.session.commit()
         all_data = todoDatbase.session.query(ToDos).all()
         return jsonify({"todos": [each_data.to_json() for each_data in all_data]})
+        print("*******_______******_____*****")
     elif request.method == 'GET':
         all_data = todoDatbase.session.query(ToDos).all()
         return jsonify({"todos": [each_data.to_json() for each_data in all_data]})

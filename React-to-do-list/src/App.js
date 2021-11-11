@@ -22,6 +22,8 @@ function App() {
       .then((show) => console.log("Todo", show));
   }, []);
 
+  console.log("TODOOOOOOOOOOOOO", toDo);
+
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
   };
@@ -43,10 +45,10 @@ function App() {
     <div className="App">
       <h1 className="main_label"> My To-Do</h1>
       <Form inputValue={inputValue} handleInputValue={handleInputValue} />
-      {toDo && toDo !== [] && (
+      {toDo && toDo.length !== 0 && (
         <ToDoLists list={toDo} handleDeleteItem={handleDeleteItem} />
       )}
-      {toDo && toDo === [] && <p>Please add something!</p>}
+      {toDo && toDo.length === 0 && <p>Please add something!</p>}
     </div>
   );
 }
