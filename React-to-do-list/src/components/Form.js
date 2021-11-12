@@ -11,7 +11,8 @@ export default function Form({ inputValue, handleInputValue, setToDo, toDO }) {
     })
       .then((res) => res.json())
       .then((result) => {
-        setToDo([...toDO, ...result["todos"]]);
+        console.log("fetch - POST - new Todo", result);
+        setToDo(result["todos"]);
       })
       .then((show) => console.log("Todo- in post fetch", show));
   };

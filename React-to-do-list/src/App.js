@@ -16,11 +16,14 @@ function App() {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log("RESULT", result);
-        setToDo([...toDo, ...result["todos"]]);
+        setToDo(result["todos"]);
+        // setToDo([...toDo, ...result["todos"]]);
+        console.log("TODO in fetch", toDo);
       })
-      .then((show) => console.log("Todo-in Get fetch", show));
+      .catch((error) => console.log("Error : ", error));
   }, []);
+
+  console.log("TODO OUT fetch", toDo);
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
@@ -51,7 +54,6 @@ function App() {
       {toDo && toDo.length !== 0 && (
         <ToDoLists list={toDo} handleDeleteItem={handleDeleteItem} />
       )}
-      {toDo && toDo.length === 0 && <p>Please add something!</p>}
     </div>
   );
 }
